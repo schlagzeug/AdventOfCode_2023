@@ -65,7 +65,7 @@ public class Part2
 	}
 }
 
-public class CamelHand
+public class CamelHand : IComparable<CamelHand>
 {
 	public int Bid { get; set; }
 	public List<CamelCard> Cards { get; set; }
@@ -145,11 +145,9 @@ public class CamelHand
 		{
 			for (int i = 0; i < 5; i++)
 			{
-				int otherCardValue;
-				int thisCardValue;
-				otherCardValue = (_isUsingJokers && otherHand.Cards[i].Value == 11) ?
+				int otherCardValue = (_isUsingJokers && otherHand.Cards[i].Value == 11) ?
 					1 : otherHand.Cards[i].Value;
-				thisCardValue = (_isUsingJokers && this.Cards[i].Value == 11) ?
+				int thisCardValue = (_isUsingJokers && this.Cards[i].Value == 11) ?
 					1 : this.Cards[i].Value;
 					
 				if (otherCardValue == thisCardValue) continue;

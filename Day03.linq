@@ -2,18 +2,15 @@
 
 void Main()
 {
-	var x = new Part1();
-	x.Run();
-	
-	var y = new Part2();
-	y.Run();
+	Part1.Run();
+	Part2.Run();
 }
 
-public class Part1
+public static class Part1
 {
-	private List<string> myarray = new List<string>();
+	private static List<string> myarray = new List<string>();
 	
-	public void Run()
+	public static void Run()
 	{
 		string filePath = Path.Combine(Path.GetDirectoryName(Util.CurrentQueryPath), "Day03.txt");
 		myarray = File.ReadAllLines(filePath).ToList();
@@ -50,7 +47,7 @@ public class Part1
 		total.Dump("Part 1");
 	}
 
-	private bool IsNextToSymbol(int x, int y)
+	private static bool IsNextToSymbol(int x, int y)
 	{
 		if (IsSymbol(x - 1, y - 1) || IsSymbol(x, y - 1) || IsSymbol(x + 1, y - 1) ||
 			IsSymbol(x - 1, y) 	   ||						IsSymbol(x + 1, y) 	   ||
@@ -62,7 +59,7 @@ public class Part1
 		return false;
 	}
 	
-	private bool IsSymbol(int x, int y)
+	private static bool IsSymbol(int x, int y)
 	{
 		try
 		{
@@ -79,7 +76,7 @@ public class Part1
 		return false;
 	}
 	
-	private int GetNumber(List<char> charlist)
+	private static int GetNumber(List<char> charlist)
 	{
 		string retVal = string.Empty;
 		foreach (var character in charlist)
@@ -90,13 +87,13 @@ public class Part1
 	}
 }
 
-public class Part2
+public static class Part2
 {
-	private List<string> myarray = new List<string>();
-	private List<GearItem> gearlist = new List<GearItem>();
-	private GearItem gearItem;
+	private static List<string> myarray = new List<string>();
+	private static List<GearItem> gearlist = new List<GearItem>();
+	private static GearItem gearItem;
 
-	public void Run()
+	public static void Run()
 	{
 		string filePath = Path.Combine(Path.GetDirectoryName(Util.CurrentQueryPath), "Day03.txt");
 		myarray = File.ReadAllLines(filePath).ToList();
@@ -159,7 +156,7 @@ public class Part2
 		total.Dump("Part 2");
 	}
 
-	private bool IsNextToGear(int x, int y)
+	private static bool IsNextToGear(int x, int y)
 	{
 		if (IsGear(x - 1, y - 1) || IsGear(x, y - 1) || IsGear(x + 1, y - 1) ||
 			IsGear(x - 1, y)     ||                     IsGear(x + 1, y) ||
@@ -171,7 +168,7 @@ public class Part2
 		return false;
 	}
 
-	private bool IsGear(int x, int y)
+	private static bool IsGear(int x, int y)
 	{
 		try
 		{
@@ -189,7 +186,7 @@ public class Part2
 		return false;
 	}
 
-	private int GetNumber(List<char> charlist)
+	private static int GetNumber(List<char> charlist)
 	{
 		string retVal = string.Empty;
 		foreach (var character in charlist)

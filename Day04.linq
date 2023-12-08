@@ -2,15 +2,13 @@
 
 void Main()
 {
-	var x = new Part1();
-	x.Run();
-	var y = new Part2();
-	y.Run();
+	Part1.Run();
+	Part2.Run();
 }
 
-public class Part1
+public static class Part1
 {
-	public void Run()
+	public static void Run()
 	{
 		int total = 0;
 		string filePath = Path.Combine(Path.GetDirectoryName(Util.CurrentQueryPath), "Day04.txt");
@@ -23,12 +21,12 @@ public class Part1
 	}
 }
 
-public class Part2
+public static class Part2
 {
-	private Dictionary<int, int> myDict = new Dictionary<int, int>();
-	private List<Card> cards = new List<Card>();
+	private static Dictionary<int, int> myDict = new Dictionary<int, int>();
+	private static List<Card> cards = new List<Card>();
 	
-	public void Run()
+	public static void Run()
 	{
 		string filePath = Path.Combine(Path.GetDirectoryName(Util.CurrentQueryPath), "Day04.txt");
 		foreach (var line in File.ReadAllLines(filePath))
@@ -51,7 +49,7 @@ public class Part2
 		total.Dump("Part 2");
 	}
 	
-	private void PopulateDownstreamCards(Card x)
+	private static void PopulateDownstreamCards(Card x)
 	{
 		for (int i = 1; i <= x.NumberOfMatches; i++)
 		{
